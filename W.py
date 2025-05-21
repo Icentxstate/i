@@ -12,6 +12,10 @@ import plotly.graph_objects as go
 import pandas as pd
 import streamlit as st
 
+site_options = df[['Site ID', 'Site Name']].drop_duplicates()
+site_options['label'] = site_options['Site ID'].astype(str) + " - " + site_options['Site Name']
+site_dict = dict(zip(site_options['label'], site_options['Site ID']))
+
 # ---- Layout setup ----
 st.set_page_config(page_title="Hydro Dashboard", layout="wide")
 st.title("🌍 Interactive Water Quality Map")
